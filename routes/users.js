@@ -16,4 +16,12 @@ router.post('/', function(req, res, next) {
     })
 });
 
+router.get('/', function(req, res, next){
+    var findAll = User.find({}).select({"email":1});
+    findAll.exec(function(err, emails){
+        if(err) console.log(err);
+        res.json(emails)
+    })
+});
+
 module.exports = router;
